@@ -21,14 +21,19 @@ const handler = async (req, res) => {
 
     const { session } = callbackResponse;
     await sessionHandler.storeSession(session);
-
+    console.log("session", session);
     const host = req.query.host;
     const { shop } = session;
 
     await prisma.stores.upsert({
       where: { shop: shop },
       update: { isActive: true },
-      create: { shop: shop, isActive: true },
+      create: {
+        shop: shop,
+        isActive: true,
+        scope: session.scope,
+        accessToken: session.accessToken,
+      },
     });
 
     // Redirect to app with shop parameter upon auth

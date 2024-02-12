@@ -15,6 +15,7 @@ const handler = async (req, res) => {
         res,
         isOnline: true,
       });
+
       const activeWebhooks = await client.request(
         `{
       webhookSubscriptions(first: 25) {

@@ -20,6 +20,7 @@ export const config = {
  * @returns {NextResponse} The response object with modified headers.
  */
 export function middleware(request) {
+  // console.log("Route: ", request);
   const {
     nextUrl: { search },
   } = request;

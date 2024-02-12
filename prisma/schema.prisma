@@ -11,8 +11,10 @@ datasource db {
 }
 
 model stores {
-  shop     String   @id
-  isActive Boolean? @default(false)
+  shop        String   @id
+  isActive    Boolean? @default(false)
+  scope       String
+  accessToken String
 }
 
 model session {
