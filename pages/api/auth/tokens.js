@@ -35,9 +35,9 @@ const handler = async (req, res) => {
       rawResponse: res,
     });
   } catch (e) {
-    console.error(`---> Error at /auth/tokens`, e);
-
+    console.error(`---> Stark Error at /auth/tokens`, e);
     const { shop } = req.query;
+    return res.redirect(`/api/auth?shop=${shop}`);
     switch (true) {
       case e instanceof CookieNotFound:
       case e instanceof InvalidOAuthError:
