@@ -36,8 +36,9 @@ const handler = async (req, res) => {
     });
   } catch (e) {
     console.error(`---> Error at /auth/tokens`, e);
+    // const { shop } = req.query;
+    return res.redirect(`/api/auth?shop=${session.shop}`);
 
-    const { shop } = req.query;
     switch (true) {
       case e instanceof CookieNotFound:
         res.redirect(`/api/auth?shop=${shop}`);
