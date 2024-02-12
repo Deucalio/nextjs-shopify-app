@@ -11,7 +11,7 @@ const isShopAvailable = async (context) => {
     if (!isShopAvailable || !isShopAvailable?.isActive) {
       return {
         redirect: {
-          destination: `${process.env.SHOPIFY_APP_URL}/?shop=${shop}`,
+          destination: `${process.env.SHOPIFY_APP_URL}?shop=${shop}`,
           permanent: false,
         },
       };
