@@ -22,6 +22,8 @@ const HomePage = () => {
   const router = useRouter();
   const fetch = useFetch();
 
+  console.log("router: ",router)
+
   return (
     <>
       <Page title="Home">
