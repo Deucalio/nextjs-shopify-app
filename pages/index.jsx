@@ -11,6 +11,7 @@ import {
 } from "@shopify/polaris";
 import { ExternalMinor } from "@shopify/polaris-icons";
 import { useRouter } from "next/router";
+import Test from "./Test";
 
 //On first install, check if the store is installed and redirect accordingly.
 //DO NOT REMOVE.
@@ -25,6 +26,7 @@ const HomePage = () => {
   return (
     <>
       <Page title="Home">
+        <Test />
         <Layout>
           <Layout.Section variant="fullWidth">
             <Card>
