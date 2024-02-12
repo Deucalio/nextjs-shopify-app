@@ -40,6 +40,7 @@ const handler = async (req, res) => {
     const { shop } = req.query;
     switch (true) {
       case e instanceof CookieNotFound:
+        res.redirect(`/api/auth?shop=${shop}`);
       case e instanceof InvalidOAuthError:
       case e instanceof InvalidSession:
         res.redirect(`/api/auth?shop=${shop}`);
