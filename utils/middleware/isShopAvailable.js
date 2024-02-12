@@ -8,7 +8,7 @@ const isShopAvailable = async (context) => {
       where: { shop: shop },
     });
 
-    if (!isShopAvailable || !isShopAvailable?.isActive) {
+    if (!isShopAvailable) {
       return {
         redirect: {
           destination: `${process.env.SHOPIFY_APP_URL}/api/auth?shop=${shop}`,
