@@ -36,10 +36,21 @@ const handler = async (req, res) => {
     });
   } catch (e) {
     console.error(`---> Stark Error at /auth/tokens`, e);
-    const { shop } = req.query;
-    return res.redirect(`/api/auth?shop=${shop}`);
     switch (true) {
       case e instanceof CookieNotFound:
+        console.log("cookie Error:")
+        const callbackResponse = await shopify.auth.callback({
+          rawRequest: req,
+          rawResponse: res,
+        });
+        const { session } = callbackResponse;
+        return await shopify.auth.begin({
+          shop: session.shop,
+          callbackPath: `/api/auth/callback`,
+          isOnline: false,
+          rawRequest: req,
+          rawResponse: res,
+        });
       case e instanceof InvalidOAuthError:
       case e instanceof InvalidSession:
         res.redirect(`/api/auth?shop=${shop}`);
